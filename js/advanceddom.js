@@ -43,3 +43,80 @@ cookie.addEventListener("click", (e) => {
   e.preventDefault();
   message.remove();
 });
+
+// Styles, Attributes, Classes
+
+// Styles
+
+// Use below code to set or get the style of a particualr element
+
+// Setting Styles
+message.style.backgroundColor = "#37383d";
+message.style.color = "#fff";
+
+// Getting Styles
+console.log(message.style.backgroundColor); // Result - rgb(55, 56, 61)
+console.log(message.style.color); // Result - rgb(255, 255, 255)
+
+// To get the style which is hidden or which is set by css file
+console.log(getComputedStyle(message));
+
+// To get the style which is hidden or which is set by css file for a particular style property.
+console.log(getComputedStyle(message).color); // Result - rgb(255, 255, 255)
+console.log(getComputedStyle(message).display); // Result - Block
+
+// Altering the height of the message
+console.log(getComputedStyle(message).height); // Result - 38px
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
+
+console.log(getComputedStyle(message).height); // Result - 68px
+
+// To change the style of the custom properties use the below code
+document.documentElement.style.setProperty("--color-primary", "lightblue");
+
+// Attributes
+
+const experimentImage = document.querySelector(".experiment-image");
+console.log(experimentImage); // Result - Displays the selected element
+
+console.log(experimentImage.alt); // Result - Blank (as it is not set in the element)
+console.log(experimentImage.src); // Result - This results in Absolute link of the src
+console.log(experimentImage.getAttribute("src")); // Result - img/share-section1-lazy.jpg (Relative link of the src)
+
+const infoButtonOne = document.querySelector(".info5");
+console.log(infoButtonOne); // Result - Displays the selected element
+
+console.log(infoButtonOne.href); // Result - This results in Absolute link of the href
+console.log(infoButtonOne.getAttribute("href")); // Result - # (Relative link of the href)
+
+// Manipulating or Setting the Attribute Values
+experimentImage.alt = "Experiment Image";
+console.log(experimentImage); // Result - alt will be manipulated/set as 'Experiment Image'
+
+experimentImage.setAttribute("name", "experiment-image");
+console.log(experimentImage); // Result - This will add a new attribute name="experiment-image" to the selected element
+
+// Classes
+
+const paraOne = document.querySelector(".paraone");
+const paraTwo = document.querySelector(".paratwo");
+const paraThree = document.querySelector(".parathree");
+const paraFour = document.querySelector(".parafour");
+
+// Adding Classes
+paraOne.classList.add("a", "z");
+console.log(paraOne); // Result - <p class="paraone a z">Paragraph One</p>
+
+// Removing classes
+paraTwo.classList.remove("b");
+console.log(paraTwo); // Result - <p class="paratwo">Paragraph Two</p>
+
+// Toggle Class
+paraThree.classList.toggle("c");
+console.log(paraThree); // Result - <p class="parathree c">Paragraph Three</p> This will add class 'c' as it is not available in the html
+
+// Contains
+paraFour.classList.contains("d");
+console.log(paraFour);
