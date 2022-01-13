@@ -120,3 +120,35 @@ console.log(paraThree); // Result - <p class="parathree c">Paragraph Three</p> T
 // Contains
 paraFour.classList.contains("d");
 console.log(paraFour);
+
+// Types of Events & Event Handlers
+
+// Mouse Enter Event
+
+const alertMessage = () => {
+  alert("Hello, you have placed cursor on this element");
+};
+
+// Addding a Event Listener
+paraOne.addEventListener("mouseenter", alertMessage);
+
+// Removing a Event Listener after a certain point of time using a setTimeout by 9 seconds
+
+setTimeout(() => {
+  paraOne.removeEventListener("mouseenter", alertMessage);
+}, 9000);
+
+// Smooth Scroll by Adding Event Listeners to the Nav Link
+const navLinks = document.querySelectorAll(".nav-link");
+
+navLinks.forEach((el) => {
+  console.log(el);
+
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    const link = e.target.getAttribute("href");
+    console.log(link);
+
+    document.querySelector(link).scrollIntoView({ behaviour: "smooth" });
+  });
+});
