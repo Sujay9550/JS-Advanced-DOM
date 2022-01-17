@@ -152,3 +152,55 @@ navLinks.forEach((el) => {
     document.querySelector(link).scrollIntoView({ behaviour: "smooth" });
   });
 });
+
+// DOM Traversing
+
+const testContainer = document.querySelector(".test-container");
+console.log(testContainer); // Result - <div class="test-container"></div>
+
+const h2 = document.querySelector("h2");
+console.log(h2); // Result - <h2>Heading Two</h2>
+
+// Going Downwards
+
+// To get the entire nodes under testContainer
+console.log(testContainer.childNodes); // Result - NodeList(9) [text, h1, text, h2, text, p, text, p, text]
+
+// To get the direct childrens of testContainer
+console.log(testContainer.children); // Result - HTMLCollection(4) [h1, h2, p, p]
+
+// To get the first element child of testContainer
+console.log(testContainer.firstElementChild); // Result - <h1>Heading One</h1>
+
+// To get the last element child of testContainer
+console.log(testContainer.lastElementChild); // Result - <p>Paragraph Two</p>
+
+// Going Upwards
+
+// To get the parentNode of testContainer
+console.log(testContainer.parentNode); // Result - <div class="col-lg-12"></div>
+
+// To get the parent element of testContainer
+console.log(testContainer.parentElement); // Result - <div class="col-lg-12"></div> (Same as parentNode)
+
+// Closest Method - To get the access to the closer parent element of testContainer using class
+console.log(testContainer.closest(".row")); // Result - <div class="row"></div>
+
+console.log(testContainer.closest(".col-lg-12").children); // Result - HTMLCollection [div.test-container]
+
+// Going Sideways: Siblings
+
+// To get the previous sibling element of testContainer
+console.log(testContainer.previousElementSibling); // Result - Null as testContainer is the first element
+
+// To get the previous sibling element of h2
+console.log(h2.previousElementSibling); // Result - <h1>Heading One</h1>
+
+// To get the next sibling element of testContainer
+console.log(testContainer.nextElementSibling); // Result - Null as testContainer is the only element available under the parent element - col-lg-12
+
+// To get the next sibling element of h2
+console.log(h2.nextElementSibling); // Result - <p>Paragraph One</p>
+
+// To get all the sibling - move up to parent and get all the child sibblings
+console.log(h2.parentElement.children); // Result - HTMLCollection(4) [h1, h2, p, p]
