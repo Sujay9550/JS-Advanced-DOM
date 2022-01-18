@@ -204,3 +204,45 @@ console.log(h2.nextElementSibling); // Result - <p>Paragraph One</p>
 
 // To get all the sibling - move up to parent and get all the child sibblings
 console.log(h2.parentElement.children); // Result - HTMLCollection(4) [h1, h2, p, p]
+
+// DOM Selections
+
+const newModal = document.querySelector(".new-modal");
+const modalOverlay = document.querySelector(".modal-overlay");
+const btnShowModal = document.querySelector(".show-modal");
+const btnCloseModal = document.querySelector(".close-modal");
+
+// Open Modal Function
+
+const openModal = (e) => {
+  e.preventDefault();
+  newModal.classList.remove("hidden");
+  modalOverlay.classList.remove("hidden");
+};
+
+// Close Modal Function
+
+const closeModal = () => {
+  newModal.classList.add("hidden");
+  modalOverlay.classList.add("hidden");
+};
+
+// Adding Event Listeners to buttons to open the  Modal
+
+btnShowModal.addEventListener("click", openModal);
+
+// Adding Event Listener to button to close the Modal
+
+btnCloseModal.addEventListener("click", closeModal);
+modalOverlay.addEventListener("click", closeModal);
+
+// Adding Event Listener for the keydown event
+
+document.addEventListener("keydown", (e) => {
+  console.log(e);
+  console.log(e.key);
+
+  if (e.key === "Escape" && !newModal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
