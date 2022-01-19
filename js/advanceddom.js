@@ -211,6 +211,10 @@ const newModal = document.querySelector(".new-modal");
 const modalOverlay = document.querySelector(".modal-overlay");
 const btnShowModal = document.querySelector(".show-modal");
 const btnCloseModal = document.querySelector(".close-modal");
+const loginContainer = document.querySelector(".lg-container");
+const loginLink = document.querySelector(".login-link");
+
+console.log(navLinks);
 
 // Open Modal Function
 
@@ -245,4 +249,43 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !newModal.classList.contains("hidden")) {
     closeModal();
   }
+});
+
+// Adding Event Listener to all the buttons to prevent the default actions.
+
+document.querySelectorAll(".btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+});
+
+// Revealing elements on Scroll - using IntersectionObserver API
+
+const allSections = document.querySelectorAll(".section");
+
+// Observer Callback Function
+const revealSection = (entries, observer) => {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) return;
+
+  // Revealing sections
+  entry.target.classList.remove("section--hidden");
+
+  // Unobserving Events
+  observer.unobserve(entry.target);
+};
+
+// Reveal Options
+const revealOptions = {
+  root: null,
+  threshold: 0.15,
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, revealOptions);
+
+allSections.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
 });
