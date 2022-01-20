@@ -61,6 +61,17 @@
   background: #c91060; /* #8d0cad */
 }
 
+.section--hidden {
+  opacity: 0;
+  transform: translateY(8rem);
+}
+
+/* Lazy Image */
+
+.lazy-img {
+  filter: blur(20px);
+}
+
 /* Modal */
 
 .hidden {
