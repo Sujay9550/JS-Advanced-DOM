@@ -213,6 +213,7 @@ const btnShowModal = document.querySelector(".show-modal");
 const btnCloseModal = document.querySelector(".close-modal");
 const loginContainer = document.querySelector(".lg-container");
 const loginLink = document.querySelector(".login-link");
+const navLinks = document.querySelectorAll(".nav-link");
 
 console.log(navLinks);
 
@@ -325,3 +326,16 @@ const imgObserver = new IntersectionObserver(loadImg, loadImgOptions);
 
 // Observing the each images from the selected element
 imgTargets.forEach((img) => imgObserver.observe(img));
+
+// Smooth Scroll by Adding Event Listeners to the Nav Link
+navLinks.forEach((el) => {
+  console.log(el);
+
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    const link = e.target.getAttribute("href");
+    console.log(link);
+
+    document.querySelector(link).scrollIntoView({ behaviour: "smooth" });
+  });
+});
